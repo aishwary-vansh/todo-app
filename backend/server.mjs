@@ -68,7 +68,7 @@ app.post('/api/tasks', async (req, res) => {
   }
 });
 
-// PATCH /api/tasks/:id
+// PATCH 
 app.patch('/api/tasks/:id', async (req, res) => {
   try {
     const { id } = req.params;
@@ -88,7 +88,7 @@ app.patch('/api/tasks/:id', async (req, res) => {
   }
 });
 
-// DELETE /api/tasks/:id
+// DELETE 
 app.delete('/api/tasks/:id', async (req, res) => {
   try {
     const { id } = req.params;
@@ -108,7 +108,7 @@ app.delete('/api/tasks/:id', async (req, res) => {
 
 // Root route
 app.get('/', (req, res) => {
-  res.send('Todo API is running 🚀');
+  res.send('Todo API is running');
 });
 
 const PORT = process.env.PORT || 3000;
