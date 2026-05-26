@@ -106,7 +106,12 @@ app.delete('/api/tasks/:id', async (req, res) => {
   }
 });
 
-const PORT = 3000;
+// Root route
+app.get('/', (req, res) => {
+  res.send('Todo API is running 🚀');
+});
+
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Backend server running on http://localhost:${PORT}`);
+  console.log(`Backend server running on port ${PORT}`);
 });
