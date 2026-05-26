@@ -8,7 +8,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-app.use(cors());
+
+app.use(cors({
+  origin: '*'
+}));
+
 app.use(express.json());
 
 const DB_FILE = path.join(__dirname, 'db.json');

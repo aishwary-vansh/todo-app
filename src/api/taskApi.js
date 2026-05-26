@@ -6,7 +6,7 @@
 //  PATCH  /api/tasks/:id      → toggleTask()
 //  DELETE /api/tasks/:id      → deleteTask()
 // ─────────────────────────────────────────────
-
+const BASE_URL = 'https://todo-app-k41s.onrender.com';
 /**
  * @typedef {{ id:string, name:string, description:string,
  *             completed:boolean, createdAt:string }} Task
@@ -21,7 +21,7 @@ const API = {
    */
   async getTasks() {
     try {
-      const res = await fetch('/api/tasks');
+      const res = await fetch(`${BASE_URL}/api/tasks`);
       const data = await res.json();
       return { status: res.status, data };
     } catch (err) {
@@ -40,7 +40,7 @@ const API = {
     if (!name.trim()) return { status: 400, error: "Task name is required." };
 
     try {
-      const res = await fetch('/api/tasks', {
+      const res = await fetch(`${BASE_URL}/api/tasks`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: name.trim(), description: description.trim() }),
@@ -60,7 +60,7 @@ const API = {
    */
   async toggleTask(id) {
     try {
-      const res = await fetch(`/api/tasks/${id}`, { method: 'PATCH' });
+      const res = await fetch(`${BASE_URL}/api/tasks/${id}`, { method: 'PATCH' });
       const data = await res.json();
       return { status: res.status, data: res.ok ? data : undefined, error: res.ok ? undefined : data.error };
     } catch (err) {
@@ -76,7 +76,7 @@ const API = {
    */
   async deleteTask(id) {
     try {
-      const res = await fetch(`/api/tasks/${id}`, { method: 'DELETE' });
+      const res = await fetch(`${BASE_URL}/api/tasks/${id}`, { method: 'DELETE' });
       const data = await res.json();
       return { status: res.status, data: res.ok ? data : undefined, error: res.ok ? undefined : data.error };
     } catch (err) {
